@@ -23,14 +23,16 @@ const login = async (req, res, next) => {
 
   const token = createJWTToken(user._id);
 
+  res.cookie('jwtToken', token);
+
   res.status(201).json({
     message: "login successful",
     token,
   });
 };
 
-const protect = async (req, res) => {
-  const token = req.cookies.jwt;
+const protect = async (req, res, next) => {
+  const token = req.cookies.jwtToken;
 
   if (!token) {
     return res.status(401).json({
@@ -47,8 +49,11 @@ const protect = async (req, res) => {
       message: "token not verify",
     });
   }
+
+  next();
 };
 
 module.exports = {
   login,
+  protect
 };
