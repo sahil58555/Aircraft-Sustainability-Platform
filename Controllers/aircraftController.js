@@ -1,11 +1,14 @@
 const recyclingpart = require("./../Models/PartsForRecycling");
 const aircraftpart = require("./../Models/AircraftPartsDataTable");
+const filterAircraft = require("./../utils/filterAircraft");
 
 const getAllAircraft = async (req, res) => {
   const aircrafts = await aircraftpart.find();
+  const filterAircrafts = filterAircraft(aircrafts);
+
   res.status(200).json({
     status: "success",
-    data: aircrafts,
+    data: filterAircrafts,
   });
 };
 
