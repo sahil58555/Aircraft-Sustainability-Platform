@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const partsForRecycleSchema = new mongoose.Schema({
   partId: {
     type: String,
-    required: true
+    required: [true, 'partId is required.']
   },
   recycled: {
     type: Boolean,
@@ -11,4 +11,4 @@ const partsForRecycleSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.model('recyclingpart', partsForRecycleSchema);
+module.exports = mongoose.model('recyclingpart', partsForRecycleSchema);
