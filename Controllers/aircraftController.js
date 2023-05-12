@@ -21,53 +21,20 @@ const addAircraftToRecycle = async (req, res) => {
 
 const addAircraftToAircraftParts = async (req, res) => {
 
-  console.log(typeof req.body);
-  console.log("Data is importing.....");
-
-  // const newObj = {
-  //   partName: aircraft.partName,
-  //   materialComposition: aircraft.materialComposition,
-  //   age: aircraft.age,
-  //   condition: aircraft.condition,
-  //   location: aircraft.location,
-  //   manufacturer: aircraft.manufacturer,
-  //   aircraftModel: aircraft.aircraftModel,
-  //   potentialUseCases: aircraft.potentialUseCases,
-  //   remanufacturingPotential: aircraft.remanufacturingPotential,
-  //   lifeCycleAssessmentScore: aircraft.lifeCycleAssessmentScore
-  // }
-
-  const newObj = {
-    partName: "Engine",
-    materialComposition: "Aluminum",
-    age: 42,
-    condition: "New",
-    location: "North America",
-    manufacturer: "Boeing",
-    aircraftModel: "Citation X",
-    potentialUseCases: "Furniture",
-    remanufacturingPotential: 0.236313346216994,
-    lifeCycleAssessmentScore: 26.1286084487724,
-    abcd: 12121
-  }
-
-  const data = await aircraftpart.create(newObj);
-
-  console.log("Data imported");
+  const data = await aircraftpart.create(req.body);
 
   res.status(200).json({
-    status: "imported"
-  })
-}
+    status: "aircraft imported",
+  });
+};
 
 const importData = async (aircraft) => {
-
   const data = await aircraftpart.create(aircraft);
-}
+};
 
 module.exports = {
   getAllAircraft,
   addAircraftToRecycle,
   addAircraftToAircraftParts,
-  importData
+  importData,
 };

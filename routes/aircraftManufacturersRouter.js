@@ -17,6 +17,11 @@ router
     aircraftController.addAircraftToRecycle
   );
 
-router.route("/import").post(aircraftController.addAircraftToAircraftParts);
+router
+  .route("/import")
+  .post(
+    authRouter.protect,
+    aircraftController.addAircraftToAircraftParts
+  );
 
 module.exports = router;

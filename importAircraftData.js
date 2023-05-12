@@ -19,6 +19,6 @@ const combinedKeysData = sheetData.map((row) => {
 const limitedData = combinedKeysData.slice(0, 1);
 
 for(const key in limitedData) {
-  //console.log(limitedData[key]);
-  importData(limitedData[key])
+  console.log(limitedData[key]);
+  //importData(limitedData[key])
 }
