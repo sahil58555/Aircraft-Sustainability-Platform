@@ -1,22 +1,19 @@
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+
 const express = require("express");
 const app = express();
-const data = require("./data.js");
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    data,
-  });
-});
+const adminRouter = require("./routes/adminRouter");
+const aircraftManufacturersRouter = require("./routes/aircraftManufacturersRouter");
+const airlinesRouter = require("./routes/airlinesRoter");
+const recyclingRouter = require("./routes/recyclingRouter");
 
-app.post("/", (req, res) => {
-  const user = req.body;
-  data.push(user);
-  res.status(200).send("Done");
-});
+app.use("/api/admin", adminRouter);
+app.use("/api/aircraft", aircraftManufacturersRouter);
+app.use("/api/airline", airlinesRouter);
+app.use("/api/recycle", recyclingRouter);
 
-app.listen(3000, () => {
-  console.log("Server is running");
-});
+module.exports = app;
