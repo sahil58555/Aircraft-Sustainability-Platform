@@ -1,25 +1,25 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const aircraftPartsSchema = new mongoose.Schema({
   partId: {
     type: String,
-    required: true
+    required: [true, 'partId is required.'],
   },
   partName: {
     type: String,
-    required: true,
+    required: [true, 'partName is required.'],
   },
   materialComposition: {
     type: String,
-    required: true,
+    required: [true, 'materialComposition is required.'],
   },
   age: {
     type: Number,
-    required: true,
+    required: [true, 'age is required.'],
   },
   condition: {
     type: String,
-    required: true,
+    required: [true, 'condition is required.'],
     enum: [
         'Used',
         'New'
@@ -27,20 +27,29 @@ const aircraftPartsSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true,
+    required: [true, 'location is required.'],
   },
   manufacturer: {
     type: String,
-    required: true,
+    required: [true, 'manufacturer is required.'],
   },
   aircraftModel: {
     type: String,
-    required: true,
+    required: [true, 'aircraftModel is required.'],
   },
   potentialUseCases: {
     type: String,
-    required: true,
+    required: [true, 'potentialUseCase is required.'],
   },
+  remanufacturingPotential: {
+    type: Number,
+    required: [true, 'remanufacturingPotential is required.'], 
+  },
+  lifeCycleAssessment: {
+    type: Number,
+    required: [true, 'lifeCycleAssessment is required.'],
+  }
 });
 
-export default mongoose.model('aircraftpart', aircraftPartsSchema);
+module.exports = mongoose.model('aircraftpart', aircraftPartsSchema);
+

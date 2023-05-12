@@ -1,20 +1,20 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
     {
         email: {
             type: String,
-            required: true,
+            required: [true, 'mail is required.'],
             lowercase: true,
             trim: true,
         },
         password: {
             type: String,
-            required: true,
+            required: [true, 'password is required.']
         },
         userType: {
             type: String,
-            required: true,
+            required: [true, 'userType is required.'],
             enum: [
                 'admin',
                 'airline',
@@ -24,5 +24,4 @@ const userSchema = new mongoose.Schema(
         }
     }
 )
-
-export default mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);
