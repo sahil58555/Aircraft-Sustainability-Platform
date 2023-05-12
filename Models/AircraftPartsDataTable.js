@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const aircraftPartsSchema = new mongoose.Schema({
-  partId: {
-    type: String,
-    required: [true, 'partId is required.'],
-  },
   partName: {
     type: String,
     required: [true, 'partName is required.'],
