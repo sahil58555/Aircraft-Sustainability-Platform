@@ -1,4 +1,4 @@
-const aircraftpart = require("./../models/AircraftPartsDataTable");
+const aircraftpart = require("./../Models/AircraftPartsDataTable");
 
 const {getAllAircraft, addAircraftToRecycle} = require("./aircraftController")
 

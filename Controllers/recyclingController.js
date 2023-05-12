@@ -1,5 +1,5 @@
-const recyclingpart = require("./../models/PartsForRecycling");
-const aircraftpart = require("./../models/AircraftPartsDataTable");
+const recyclingpart = require("../Models/PartsForRecycling");
+const aircraftpart = require("../Models/AircraftPartsDataTable");
 
 const getAircraftsStatus = async (req, res) => {
   const aircrafts = await recyclingpart.find();
@@ -11,9 +11,9 @@ const getAircraftsStatus = async (req, res) => {
 
 const updateStatusOfAircraft = async (req, res) => {
   await recyclingpart.deleteOne({ _id: req.body._id });
-  
+
   req.body.age = 0;
-  req.body.condition = "New"
+  req.body.condition = "New";
 
   const aircraft = await aircraftpart.create(req.body);
 

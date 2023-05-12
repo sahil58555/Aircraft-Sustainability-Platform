@@ -1,5 +1,5 @@
-const recyclingpart = require("./../models/PartsForRecycling");
-const aircraftpart = require("./../models/AircraftPartsDataTable");
+const recyclingpart = require("./../Models/PartsForRecycling");
+const aircraftpart = require("./../Models/AircraftPartsDataTable");
 
 const getAllAircraft = async (req, res) => {
   const aircrafts = await aircraftpart.find();
