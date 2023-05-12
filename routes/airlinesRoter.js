@@ -1,14 +1,14 @@
 const express = require("express");
-
+const airlinesController = require('./../Controllers/airlinesController')
 const router = express.Router();
 
 router
   .route("/aircraft")
-  .get((req, res) => res.status(200).json({ message: " get aircraft" }))
-  .post((req, res) => res.status(200).json({ message: "post aircraft" }));
+  .get(airlinesController.getAllAircraft)
+  .post(airlinesController.addAircraftToRecycle);
 
 router
   .route("/buyAircraft")
-  .post((req, res) => res.status(200).json({ message: "post buyaircraft" }));
+  .post(airlinesController.buyAndRemoveAircraft);
 
 module.exports = router;

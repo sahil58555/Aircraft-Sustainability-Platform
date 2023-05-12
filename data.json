@@ -1,0 +1,14 @@
+[
+  {
+    "partName": "xyz",
+    "materialComposition": "123",
+    "age": 40,
+    "condition": "New",
+    "location": "India",
+    "manufacturer": "opop",
+    "aircraftModel": "sss",
+    "potentialUseCases": "aaa",
+    "remanufacturingPotential": 122,
+    "lifeCycleAssessment": 1212
+  }
+]
