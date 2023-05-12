@@ -41,7 +41,7 @@ const partsForRecycleSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'remanufacturingPotential is required.'], 
   },
-  lifeCycleAssessment: {
+  lifeCycleAssessmentScore: {
     type: Number,
     required: [true, 'lifeCycleAssessment is required.'],
   },
