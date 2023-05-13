@@ -1,13 +1,15 @@
 const recyclingpart = require("./../Models/PartsForRecycling");
 const aircraftpart = require("./../Models/AircraftPartsDataTable");
 const filterAircraft = require("./../utils/filterAircraft");
+const excelData = require("./../importAircraftData");
 
 const getAllAircraft = async (req, res) => {
   const aircrafts = await aircraftpart.find();
-  const filterAircrafts = filterAircraft(aircrafts);
+  const filterAircrafts = (req.userType === 'manufacturer') ? filterAircraft(aircrafts) : aircrafts;
 
   res.status(200).json({
     status: "success",
+    result: filterAircrafts.length,
     data: filterAircrafts,
   });
 };
@@ -21,20 +23,16 @@ const addAircraftToRecycle = async (req, res) => {
 
 const addAircraftToAircraftParts = async (req, res) => {
 
-  const data = await aircraftpart.create(req.body);
+  const limit = req.params.limit || 5;
+  const data = await aircraftpart.create(excelData(limit));
 
   res.status(200).json({
     status: "aircraft imported",
   });
 };
 
-const importData = async (aircraft) => {
-  const data = await aircraftpart.create(aircraft);
-};
-
 module.exports = {
   getAllAircraft,
   addAircraftToRecycle,
   addAircraftToAircraftParts,
-  importData,
 };

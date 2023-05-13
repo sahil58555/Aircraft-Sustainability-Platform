@@ -18,7 +18,7 @@ router
   );
 
 router
-  .route("/import")
+  .route("/import/:limit?")
   .post(
     authRouter.protect,
     aircraftController.addAircraftToAircraftParts

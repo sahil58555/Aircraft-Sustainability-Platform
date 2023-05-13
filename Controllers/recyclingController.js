@@ -5,6 +5,7 @@ const getAircraftsStatus = async (req, res) => {
   const aircrafts = await recyclingpart.find();
   res.status(200).json({
     status: "success",
+    result: aircrafts.length,
     data: aircrafts,
   });
 };
