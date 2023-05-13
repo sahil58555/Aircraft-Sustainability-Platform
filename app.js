@@ -5,6 +5,11 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser")
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Replace with your React app's domain
+    next();
+  });
+
 app.use(express.json());
 app.use(cookieParser());
 
